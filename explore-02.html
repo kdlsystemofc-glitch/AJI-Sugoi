@@ -1,0 +1,352 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aji Sugoi — Exploração 02: O Pôster Escultórico</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #060608;
+      --red-brand: #c1121f;
+      --red-bright: #e63946;
+      --gold-stamp: #dfa857;
+      --text: #ffffff;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-kanji: 'Noto Serif JP', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(193, 18, 31, 0.18) 0%, transparent 65%),
+        linear-gradient(180deg, #09090c 0%, #040405 100%);
+    }
+
+    /* TOP MINIMAL BAR */
+    .poster-header {
+      padding: 24px 40px 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .brand-h-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo-poster {
+      width: 38px;
+      height: 38px;
+      background: #fff;
+      border-radius: 4px;
+      padding: 2px;
+    }
+
+    .brand-h-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .header-geo-stamp {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-stamp);
+    }
+
+    /* POSTER BODY (3-COLUMN TRIPTYCH) */
+    .poster-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 280px 1fr 340px;
+      align-items: center;
+      padding: 0 40px;
+      gap: 30px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* LEFT VERTICAL KANJI CALLIGRAPHY */
+    .poster-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .kanji-vertical-strip {
+      font-family: var(--font-kanji);
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.15);
+      line-height: 1.1;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      letter-spacing: 0.1em;
+      border-left: 2px solid var(--red-brand);
+      padding-left: 12px;
+    }
+
+    .left-manifesto-badge {
+      font-size: 0.72rem;
+      color: #9f9aa4;
+      line-height: 1.5;
+      max-width: 220px;
+    }
+
+    .left-manifesto-badge strong {
+      color: #fff;
+    }
+
+    /* CENTER SCULPTURAL HERO OBJECT */
+    .poster-col-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .sculpture-glow {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(193, 18, 31, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+      filter: blur(20px);
+    }
+
+    .sculpture-frame {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 580px;
+      height: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--red-brand);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 30px rgba(193,18,31,0.3);
+    }
+
+    .sculpture-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: saturate(1.15) contrast(1.08);
+      transition: transform 0.8s ease;
+    }
+
+    .sculpture-frame:hover .sculpture-img {
+      transform: scale(1.04);
+    }
+
+    .sculpture-title-overlay {
+      position: absolute;
+      bottom: 0;
+      inset-x: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(6,6,8,0.95) 90%);
+      padding: 24px 28px 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .sculpture-overlay-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .sculpture-overlay-sub {
+      font-size: 0.75rem;
+      color: var(--gold-stamp);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* RIGHT EDITORIAL BLOCK */
+    .poster-col-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .right-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red-bright);
+      margin-bottom: 12px;
+    }
+
+    .right-headline {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .right-headline span {
+      color: var(--red-bright);
+    }
+
+    .right-text {
+      font-size: 0.92rem;
+      color: #b7b2be;
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    .right-cta-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-poster-action {
+      background: var(--red-brand);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(193, 18, 31, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .btn-poster-action:hover {
+      background: var(--red-bright);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER STRIP */
+    .poster-footer {
+      padding: 14px 40px;
+      background: rgba(12, 12, 16, 0.95);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #8c8893;
+      z-index: 20;
+    }
+
+    .poster-footer strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="poster-header">
+    <div class="brand-h-group">
+      <img src="imagens/imgi_2_347438049_2476408409174297_4129804133420243989_n.jpg" alt="Aji Sugoi Logo" class="brand-logo-poster">
+      <div class="brand-h-title">AJI SUGOI</div>
+    </div>
+    <div class="header-geo-stamp">
+      São Bernardo do Campo • Bairro dos Casa
+    </div>
+  </header>
+
+  <!-- POSTER TRIPTYCH BODY -->
+  <main class="poster-body">
+    
+    <!-- LEFT KANJI -->
+    <div class="poster-col-left">
+      <div class="kanji-vertical-strip">味すごい</div>
+      <p class="left-manifesto-badge">
+        <strong>Autenticidade & Fartura.</strong><br>
+        Cortes nobres de salmão fresco preparados artesanalmente todos os dias.
+      </p>
+    </div>
+
+    <!-- CENTER HERO OBJECT -->
+    <div class="poster-col-center">
+      <div class="sculpture-glow"></div>
+      <div class="sculpture-frame">
+        <img src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="Combinado Exclusivo Caixa Vermelha" class="sculpture-img">
+        <div class="sculpture-title-overlay">
+          <div>
+            <div class="sculpture-overlay-name">Combinado Autoral</div>
+            <div class="sculpture-overlay-sub">A Famosa Caixa Vermelha</div>
+          </div>
+          <div style="color:#22c55e; font-weight:700; font-size:0.75rem;">
+            ● Abre às 17:30
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT EDITORIAL CALLOUT -->
+    <div class="poster-col-right">
+      <span class="right-tag">Delivery Premium SBC</span>
+      <h2 class="right-headline">
+        A Arte de <span>Entregar Frescor.</span>
+      </h2>
+      <p class="right-text">
+        Embalagem térmica estruturada que protege cada peça e garante textura crocante e corte perfeito do nosso sushibar até a sua mesa.
+      </p>
+
+      <div class="right-cta-box">
+        <a href="https://ajisugoidelivery.com.br" target="_blank" class="btn-poster-action">
+          Pedir no Cardápio Oficial →
+        </a>
+        <div style="font-size:0.75rem; text-align:center; color:#a19ba8;">
+          Telefone Direto: <strong style="color:#fff;">(11) 4355-7193</strong>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="poster-footer">
+    <div><strong>Salão Presencial:</strong> Rua Wadia Jafete Assad, 20 — São Bernardo do Campo</div>
+    <div><strong>Horário:</strong> Terça a Domingo a partir das 17:30</div>
+    <div><strong>Plataforma:</strong> ajisugoidelivery.com.br</div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aji Sugoi — Exploração 01: Monólito Vermelho & Matéria</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #08080a;
+      --red: #c1121f;
+      --red-bright: #e63946;
+      --gold: #dfa857;
+      --text: #ffffff;
+      --muted: #a39ea8;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-kanji: 'Noto Serif JP', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      position: relative;
+    }
+
+    /* LEFT EDITORIAL COLUMN */
+    .monolith-left {
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+      background: radial-gradient(circle at 0% 0%, rgba(193, 18, 31, 0.15) 0%, transparent 60%), #08080a;
+      border-right: 1px solid rgba(193, 18, 31, 0.3);
+    }
+
+    .top-nav-minimal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-mark-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-logo-sq {
+      width: 42px;
+      height: 42px;
+      background: #fff;
+      border-radius: 4px;
+      padding: 2px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+
+    .brand-name-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .brand-name-sub {
+      font-size: 0.68rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    /* MAIN TYPOGRAPHIC STATEMENT */
+    .monolith-content {
+      margin: auto 0;
+      position: relative;
+    }
+
+    .kanji-ghost {
+      position: absolute;
+      top: -60px;
+      left: -20px;
+      font-family: var(--font-kanji);
+      font-size: 9rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .monolith-stamp {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red-bright);
+      margin-bottom: 12px;
+    }
+
+    .monolith-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 4.2vw, 4.6rem);
+      font-weight: 900;
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .monolith-title span {
+      color: var(--red-bright);
+      display: block;
+      font-style: italic;
+    }
+
+    .monolith-desc {
+      font-size: 1.05rem;
+      color: #c7c3cc;
+      line-height: 1.5;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .monolith-desc strong {
+      color: #fff;
+    }
+
+    .monolith-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-main-red {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(193, 18, 31, 0.45);
+      transition: all 0.2s ease;
+    }
+
+    .btn-main-red:hover {
+      background: var(--red-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 34px rgba(230, 57, 70, 0.6);
+    }
+
+    .btn-ghost-phone {
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.2s ease;
+    }
+
+    .btn-ghost-phone:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* FOOTER ADDRESS */
+    .monolith-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 0.76rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+    }
+
+    .monolith-footer strong {
+      color: #fff;
+    }
+
+    /* RIGHT FULL-SCALE PHOTOGRAPHIC MATÉRIA */
+    .monolith-right {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      background: #120304;
+    }
+
+    .monolith-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: saturate(1.2) contrast(1.1);
+      transform: scale(1.02);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .monolith-right:hover .monolith-photo {
+      transform: scale(1.06);
+    }
+
+    .lacquer-vignette {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #08080a 0%, rgba(8,8,10,0.2) 30%, transparent 60%),
+                  linear-gradient(180deg, rgba(8,8,10,0.4) 0%, transparent 30%, rgba(8,8,10,0.8) 100%);
+      pointer-events: none;
+    }
+
+    .floating-pill-tag {
+      position: absolute;
+      bottom: 40px;
+      right: 48px;
+      background: rgba(8, 8, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(223, 168, 87, 0.4);
+      padding: 12px 22px;
+      border-radius: 4px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .pill-tag-sup {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .pill-tag-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LEFT MONOLITH -->
+  <section class="monolith-left">
+    
+    <div class="top-nav-minimal">
+      <a href="#" class="brand-mark-group">
+        <img src="imagens/imgi_2_347438049_2476408409174297_4129804133420243989_n.jpg" alt="Aji Sugoi" class="brand-logo-sq">
+        <div>
+          <div class="brand-name-title">AJI SUGOI</div>
+          <div class="brand-name-sub">SBC • Culinária Autoral</div>
+        </div>
+      </a>
+
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Abre às 17:30</span>
+      </div>
+    </div>
+
+    <div class="monolith-content">
+      <div class="kanji-ghost">味</div>
+      <span class="monolith-stamp">★ A Famosa Caixa Vermelha</span>
+      <h1 class="monolith-title">
+        Fartura sem freio.
+        <span>Peixe fresco de verdade.</span>
+      </h1>
+      <p class="monolith-desc">
+        A experiência japonesa mais pedida de São Bernardo do Campo. Combinados generosos montados na icônica <strong>caixa rígida vermelha</strong> que chega impecável à sua mesa.
+      </p>
+
+      <div class="monolith-cta-group">
+        <a href="https://ajisugoidelivery.com.br" target="_blank" class="btn-main-red">
+          Abrir Cardápio & Pedir →
+        </a>
+        <a href="tel:1143557193" class="btn-ghost-phone">
+          (11) 4355-7193
+        </a>
+      </div>
+    </div>
+
+    <div class="monolith-footer">
+      <div>
+        <strong>Salão & Retirada</strong><br>
+        Rua Wadia Jafete Assad, 20 — Bairro dos Casa
+      </div>
+      <div>
+        <strong>Delivery Direto</strong><br>
+        ajisugoidelivery.com.br
+      </div>
+    </div>
+
+  </section>
+
+  <!-- RIGHT MATÉRIA BLEED -->
+  <section class="monolith-right">
+    <img src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="Combinado Aji Sugoi na Caixa Vermelha" class="monolith-photo">
+    <div class="lacquer-vignette"></div>
+
+    <div class="floating-pill-tag">
+      <span class="pill-tag-sup">Embalagem Exclusiva</span>
+      <span class="pill-tag-title">Caixa Vermelha Aji</span>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aji Sugoi — Explore 03: Quiet Confidence</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #08080a;
+      --text: #f0f0f2;
+      --text-muted: rgba(240, 240, 242, 0.65);
+      --red-accent: #c8102e;
+      --gold-subtle: #d6b88d;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-kanji: 'Noto Serif JP', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 64px;
+      position: relative;
+    }
+
+    /* FULL SCREEN BACKGROUND IMMERSION WITH SOFT CONTRAST */
+    .bg-immersive-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+      filter: saturate(1.1) brightness(0.72) contrast(1.05);
+      z-index: 1;
+    }
+
+    .quiet-vignette {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 50% 50%, rgba(8,8,10,0.2) 20%, rgba(8,8,10,0.85) 90%),
+        linear-gradient(180deg, rgba(8,8,10,0.7) 0%, transparent 40%, rgba(8,8,10,0.85) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* MINIMAL, CONFIDENT TOP BAR */
+    .quiet-header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-kanji {
+      font-family: var(--font-kanji);
+      font-size: 0.95rem;
+      color: var(--red-accent);
+    }
+
+    .header-info-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .header-info-link:hover {
+      color: #fff;
+    }
+
+    /* QUIET CENTER/BOTTOM CORE */
+    .quiet-content-center {
+      position: relative;
+      z-index: 10;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: auto;
+      margin-bottom: 24px;
+    }
+
+    .quiet-statement {
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 400;
+      line-height: 1.4;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .quiet-statement strong {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .quiet-subtext {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 500px;
+    }
+
+    .quiet-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .quiet-btn-primary {
+      background: var(--red-accent);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 4px;
+      transition: opacity 0.2s ease;
+    }
+
+    .quiet-btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .quiet-link-secondary {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .quiet-link-secondary:hover {
+      color: #ffffff;
+    }
+
+    /* DISCREET FOOTER */
+    .quiet-footer {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 24px; }
+      .quiet-footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="imagens/imgi_51_625949395_18358099891202664_240056681359955242_n.jpg" alt="Aji Sugoi Gastronomia Japonesa" class="bg-immersive-media">
+  <div class="quiet-vignette"></div>
+
+  <header class="quiet-header">
+    <a href="#" class="brand-block">
+      <span class="brand-title">Aji Sugoi</span>
+      <span class="brand-kanji">味すごい</span>
+    </a>
+    <a href="tel:1143557193" class="header-info-link">(11) 4355-7193</a>
+  </header>
+
+  <main class="quiet-content-center">
+    <h1 class="quiet-statement">
+      Peixe fresco de verdade, servido com a fartura tradicional da casa.
+    </h1>
+    <p class="quiet-subtext">
+      Combinados montados no dia para apreciar em nosso salão ou receber em sua casa na famosa embalagem rígida vermelha.
+    </p>
+
+    <div class="quiet-actions">
+      <a href="https://ajisugoidelivery.com.br" target="_blank" class="quiet-btn-primary">
+        Pedir no delivery oficial &rarr;
+      </a>
+      <a href="https://maps.google.com/?q=Rua+Wadia+Jafete+Assad+20+Sao+Bernardo+do+Campo" target="_blank" class="quiet-link-secondary">
+        Rua Wadia Jafete Assad, 20 &bull; Bairro dos Casa
+      </a>
+    </div>
+  </main>
+
+  <footer class="quiet-footer">
+    <span>São Bernardo do Campo &bull; Salão e Delivery</span>
+    <span>Aberto hoje a partir das 17:30</span>
+  </footer>
+
+</body>
+</html>

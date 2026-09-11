@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aji Sugoi — Explore 01: Comida como Paisagem</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070709;
+      --text: #f4f3f0;
+      --text-soft: rgba(244, 243, 240, 0.72);
+      --red: #c8102e;
+      --gold-warm: #e2c08d;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-kanji: 'Noto Serif JP', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* FOOD AS A LIVING LANDSCAPE */
+    .landscape-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 45%;
+      filter: saturate(1.1) brightness(0.8) contrast(1.08);
+      z-index: 1;
+    }
+
+    /* NATURAL VIGNETTE DRAWING EYE TO FRESH TEXTURES */
+    .landscape-atmosphere {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 40% 50%, transparent 25%, rgba(7,7,9,0.4) 65%, rgba(7,7,9,0.88) 100%),
+        linear-gradient(180deg, rgba(7,7,9,0.7) 0%, transparent 35%, rgba(7,7,9,0.8) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* HEADER */
+    .site-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      padding: 36px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-kanji {
+      font-family: var(--font-kanji);
+      font-size: 0.95rem;
+      color: var(--red);
+    }
+
+    .nav-location {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+    }
+
+    /* EDITORIAL POETIC CORE */
+    .landscape-content {
+      position: absolute;
+      left: 48px;
+      bottom: 52px;
+      max-width: 580px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .landscape-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.2vw, 4rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+
+    .landscape-title em {
+      font-style: italic;
+      color: var(--gold-warm);
+    }
+
+    .landscape-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      max-width: 460px;
+    }
+
+    .landscape-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 4px;
+      width: fit-content;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .landscape-action:hover {
+      border-color: var(--gold-warm);
+      transform: translateX(4px);
+    }
+
+    /* TIME & ORDER NOTICE */
+    .service-note {
+      position: absolute;
+      right: 48px;
+      bottom: 52px;
+      z-index: 10;
+      text-align: right;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text-soft);
+    }
+
+    .service-note strong {
+      color: #ffffff;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .site-nav { padding: 24px; }
+      .landscape-content { left: 24px; bottom: 32px; right: 24px; }
+      .service-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="imagens/imgi_42_639856189_18564622342037059_7155013422789376632_n.jpg" alt="Aji Sugoi Frescor e Matéria" class="landscape-media">
+  <div class="landscape-atmosphere"></div>
+
+  <header class="site-nav">
+    <a href="#" class="brand-mark">
+      <span class="brand-name">Aji Sugoi</span>
+      <span class="brand-kanji">味すごい</span>
+    </a>
+    <span class="nav-location">São Bernardo do Campo &bull; Bairro dos Casa</span>
+  </header>
+
+  <main class="landscape-content">
+    <h1 class="landscape-title">
+      Onde o peixe fresco é a <em>própria matéria</em> da mesa.
+    </h1>
+    <p class="landscape-text">
+      Cortes fartos de salmão, peixes brancos e combinados autorais preparados diariamente. Servido em nosso salão e entregue com todo o rigor em sua casa.
+    </p>
+    <a href="https://ajisugoidelivery.com.br" target="_blank" class="landscape-action">
+      Pedir pelo delivery oficial &rarr;
+    </a>
+  </main>
+
+  <aside class="service-note">
+    <strong>Atendimento a partir das 17:30</strong>
+    Rua Wadia Jafete Assad, 20 &bull; (11) 4355-7193
+  </aside>
+
+</body>
+</html>

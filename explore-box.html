@@ -1,0 +1,255 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aji Sugoi — Explore 02: A Caixa Vermelha como Espaço</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0c0b0e;
+      --lacquer-red: #b80f28;
+      --lacquer-deep: #7a0618;
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-kanji: 'Noto Serif JP', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* THE RED LACQUER PLANE AS SPATIAL FOUNDATION */
+    .box-spatial-ground {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 58%;
+      background: linear-gradient(135deg, var(--lacquer-red) 0%, var(--lacquer-deep) 100%);
+      clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+
+    /* THE REAL FOOD HERO EMERGING FROM THE LACQUER PLANE */
+    .food-hero-container {
+      position: absolute;
+      top: 10%;
+      right: 4%;
+      width: 54vw;
+      height: 80vh;
+      z-index: 2;
+      overflow: hidden;
+      box-shadow: -20px 30px 70px rgba(0,0,0,0.6);
+    }
+
+    .food-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.15) contrast(1.08);
+      transform: scale(1.02);
+      transition: transform 1.2s ease;
+    }
+
+    .food-hero-container:hover .food-hero-img {
+      transform: scale(1.06);
+    }
+
+    /* HEADER */
+    .header-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-kanji-tag {
+      font-family: var(--font-kanji);
+      font-size: 1rem;
+      color: #fff;
+      opacity: 0.85;
+    }
+
+    .nav-contact-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* LEFT EDITORIAL COLUMN */
+    .left-narrative {
+      position: absolute;
+      left: 56px;
+      top: 24%;
+      max-width: 480px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .sub-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .narrative-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: #ffffff;
+    }
+
+    .narrative-copy {
+      font-size: 0.96rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    .btn-main-order {
+      background: #ffffff;
+      color: #0c0b0e;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-main-order:hover {
+      background: #f0e6d2;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-phone {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.88rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn-secondary-phone:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* BOTTOM BAR */
+    .bottom-info-strip {
+      position: absolute;
+      bottom: 40px;
+      left: 56px;
+      right: 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 10;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    @media (max-width: 900px) {
+      .box-spatial-ground { width: 100%; clip-path: none; opacity: 0.2; }
+      .food-hero-container { position: relative; width: 100%; height: 45vh; top: auto; right: auto; margin-top: 80px; }
+      .left-narrative { position: relative; left: 24px; top: auto; padding-top: 24px; }
+      .header-nav { padding: 24px; }
+      .bottom-info-strip { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box-spatial-ground"></div>
+
+  <header class="header-nav">
+    <a href="#" class="brand-group">
+      <span class="brand-title">Aji Sugoi</span>
+      <span class="brand-kanji-tag">味すごい</span>
+    </a>
+    <a href="tel:1143557193" class="nav-contact-link">(11) 4355-7193</a>
+  </header>
+
+  <div class="food-hero-container">
+    <img src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="A Famosa Caixa Vermelha Aji Sugoi" class="food-hero-img">
+  </div>
+
+  <main class="left-narrative">
+    <span class="sub-tag">Culinária Japonesa &bull; São Bernardo do Campo</span>
+    <h1 class="narrative-headline">
+      A famosa caixa vermelha com a fartura que o ABC conhece.
+    </h1>
+    <p class="narrative-copy">
+      Combinados montados com peixe fresco selecionado no dia e embalagem rígida sob medida para preservar a textura e a montagem impecável de cada peça até a sua mesa.
+    </p>
+
+    <div class="action-row">
+      <a href="https://ajisugoidelivery.com.br" target="_blank" class="btn-main-order">
+        Fazer pedido no delivery &rarr;
+      </a>
+      <a href="tel:1143557193" class="btn-secondary-phone">
+        Salão & Reservas
+      </a>
+    </div>
+  </main>
+
+  <footer class="bottom-info-strip">
+    <span>Rua Wadia Jafete Assad, 20 &bull; Bairro dos Casa</span>
+    <span>Terça a Domingo &bull; a partir das 17:30</span>
+  </footer>
+
+</body>
+</html>
