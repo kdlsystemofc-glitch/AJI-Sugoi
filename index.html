@@ -80,6 +80,42 @@
       overflow: hidden;
     }
 
+    /* LAYER 0: INCOMING SCENE 02 MEDIA (Guarantees 100% media coverage across shear handoff) */
+    .opening-incoming-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+      background-color: var(--bg-dark);
+    }
+
+    .opening-incoming-layer .incoming-media-track {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .opening-incoming-layer .incoming-media-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+      filter: saturate(1.22) brightness(0.94) contrast(1.1);
+    }
+
+    .opening-incoming-layer .incoming-atmosphere {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(7,7,9,0.45) 70%, rgba(7,7,9,0.85) 100%),
+        linear-gradient(180deg, rgba(7,7,9,0.7) 0%, transparent 35%, rgba(7,7,9,0.75) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
     /* HERO MEDIA (Clipped along physical shear angle on scroll) */
     .opening-media-wrap {
       position: absolute;
@@ -850,7 +886,15 @@
   <section class="stage-opening" data-stage="opening">
     <div class="opening-viewport">
       
-      <!-- EXPLORE 01 HERO MEDIA (Clipped along physical shear) -->
+      <!-- LAYER 0: INCOMING SCENE 02 MEDIA (Guarantees 100% media coverage across entire shear) -->
+      <div class="opening-incoming-layer">
+        <div class="incoming-media-track">
+          <img class="incoming-media-img" src="imagens/imgi_16_660665702_18418324108125243_6473536147567592195_n.jpg" alt="Anatomia dos Cortes de Salmão e Peixes Frescos" />
+        </div>
+        <div class="incoming-atmosphere"></div>
+      </div>
+
+      <!-- LAYER 1: EXPLORE 01 HERO MEDIA (Clipped along physical shear) -->
       <div class="opening-media-wrap">
         <img class="opening-img" src="imagens/imgi_42_639856189_18564622342037059_7155013422789376632_n.jpg" alt="Aji Sugoi Frescor e Matéria" />
         <div class="opening-atmosphere"></div>
