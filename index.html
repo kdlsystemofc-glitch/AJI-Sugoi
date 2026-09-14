@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aji Sugoi — Direção Editorial: A Famosa Caixa Vermelha</title>
+  <title>Aji Sugoi — Culinária Japonesa em São Bernardo do Campo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍣</text></svg>">
   
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Noto+Serif+JP:wght@600;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
 
+  <!-- Core Styles -->
   <style>
     :root {
-      --bg: #040406;
-      --lacquer-red: #c8102e;
-      --lacquer-red-glow: #e60026;
-      --lacquer-dark: #6e0515;
-      --gold: #d4af37;
-      --gold-pale: #eed8a1;
-      --text-main: #f5f5f7;
-      --text-muted: rgba(245, 245, 247, 0.65);
-      --font-display: 'Syne', sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --bg-dark: #070709;
+      --bg-lacquer: #b30c24;
+      --lacquer-deep: #7a0616;
+      --lacquer-bright: #c8102e;
+      --gold-warm: #e2c08d;
+      --gold-bright: #f0d5a8;
+      --text-main: #f4f3f0;
+      --text-soft: rgba(244, 243, 240, 0.76);
+      --text-dim: rgba(244, 243, 240, 0.52);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
       --font-kanji: 'Noto Serif JP', serif;
     }
 
@@ -32,1386 +36,1159 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    body {
-      background-color: var(--bg);
+    html, body {
+      background-color: var(--bg-dark);
       color: var(--text-main);
-      font-family: var(--font-body);
-      width: 100vw;
-      min-height: 100vh;
+      font-family: var(--font-sans);
       overflow-x: hidden;
-      position: relative;
+      width: 100%;
+      overscroll-behavior: none;
     }
 
-    /* 100% FULL BLEED VISCERAL PHOTOGRAPHY */
-    .viewport-canvas {
+    /* LENIS SMOOTH SCROLL STYLES */
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    /* GLOBAL PINNED WRAPPER */
+    .viewport-stage {
       position: relative;
       width: 100vw;
       height: 100vh;
-      min-height: 720px;
+      height: 100dvh;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(24px, 4vw, 52px);
     }
 
-    .bg-food-fullscreen {
+    /* SCENE 01: OPENING / EXPLORE 01 (LOCKED FIRST FRAME) */
+    .stage-opening {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 10;
+    }
+
+    .opening-viewport {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-dark);
+    }
+
+    /* LAYER 0: INCOMING SCENE 02 BASE (Guarantees 100% media coverage at all times) */
+    .opening-base-incoming {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .opening-base-incoming .base-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150vw;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    /* LAYER 1: EXPLORE 01 HERO MEDIA (Clipped along physical shear angle) */
+    .opening-media-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      clip-path: polygon(0% 0%, 140% 0%, 115% 100%, 0% 100%);
+      will-change: clip-path;
+    }
+
+    .opening-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 58% 38%;
-      filter: saturate(1.15) contrast(1.12) brightness(0.65);
-      transform: scale(1.02);
-      z-index: 1;
-      pointer-events: none;
+      object-position: 50% 45%;
+      filter: saturate(1.1) brightness(0.82) contrast(1.08);
+      transform-origin: center center;
+      will-change: transform;
     }
 
-    /* EDITORIAL ATMOSPHERE OVERLAY & REAL GRAIN */
-    .editorial-atmosphere {
+    .opening-atmosphere {
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(ellipse at 85% 30%, transparent 8%, rgba(4,4,6,0.45) 55%, rgba(4,4,6,0.92) 100%),
-        linear-gradient(180deg, rgba(4,4,6,0.85) 0%, rgba(4,4,6,0.15) 30%, rgba(4,4,6,0.45) 65%, rgba(4,4,6,0.96) 100%);
+        radial-gradient(ellipse at 40% 50%, transparent 25%, rgba(7,7,9,0.4) 65%, rgba(7,7,9,0.88) 100%),
+        linear-gradient(180deg, rgba(7,7,9,0.7) 0%, transparent 35%, rgba(7,7,9,0.8) 100%);
       z-index: 2;
       pointer-events: none;
     }
 
-    .film-grain {
+    /* LAYER 2: THE PHYSICAL RED SHEAR BLADE */
+    .opening-shear-blade {
+      position: absolute;
+      top: -15%;
+      left: 0;
+      width: 80px;
+      height: 130%;
+      background: linear-gradient(135deg, rgba(255, 80, 110, 0.95) 0%, var(--lacquer-bright) 35%, var(--lacquer-deep) 100%);
+      box-shadow: 0 0 60px rgba(200, 16, 46, 0.85), 0 0 20px rgba(255, 255, 255, 0.4);
+      transform: translate3d(140vw, 0, 0) skewX(-14.04deg);
+      z-index: 3;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .site-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      padding: 36px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-kanji {
+      font-family: var(--font-kanji);
+      font-size: 0.95rem;
+      color: var(--lacquer-bright);
+    }
+
+    .nav-location {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+    }
+
+    .opening-content {
+      position: absolute;
+      left: 48px;
+      bottom: 52px;
+      max-width: 580px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      will-change: transform, opacity;
+    }
+
+    .opening-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.2vw, 4rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+
+    .opening-title em {
+      font-style: italic;
+      color: var(--gold-warm);
+    }
+
+    .opening-lead {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      font-weight: 300;
+      max-width: 480px;
+    }
+
+    .opening-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-main);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(244, 243, 240, 0.35);
+      padding-bottom: 6px;
+      width: fit-content;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .opening-action:hover {
+      border-color: var(--gold-warm);
+      transform: translateX(4px);
+    }
+
+    .opening-note {
+      position: absolute;
+      right: 48px;
+      bottom: 52px;
+      z-index: 10;
+      text-align: right;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text-soft);
+      will-change: transform, opacity;
+    }
+
+    .opening-note strong {
+      color: #ffffff;
+      display: block;
+    }
+
+    /* ==========================================================================
+       SCENE 02: ANATOMIA DOS CORTES (SCROLL-PINNED FLOW)
+       ========================================================================== */
+    .stage-anatomy {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 12;
+      background-color: var(--bg-dark);
+    }
+
+    .anatomy-viewport {
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
-      opacity: 0.8;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .anatomy-strip-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150vw;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      will-change: transform;
+    }
+
+    .anatomy-strip-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+      filter: saturate(1.15) brightness(0.88) contrast(1.1);
+      will-change: transform;
+    }
+
+    .anatomy-vignette {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(90deg, rgba(7,7,9,0.94) 0%, rgba(7,7,9,0.45) 45%, rgba(7,7,9,0.9) 100%),
+        linear-gradient(180deg, rgba(7,7,9,0.75) 0%, transparent 25%, transparent 75%, rgba(7,7,9,0.95) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .anatomy-editorial {
+      position: absolute;
+      left: clamp(32px, 6vw, 96px);
+      max-width: 560px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      will-change: transform, opacity;
+    }
+
+    .anatomy-kanji {
+      font-family: var(--font-kanji);
+      font-size: 1.15rem;
+      color: var(--lacquer-bright);
+      letter-spacing: 0.22em;
+    }
+
+    .anatomy-statement {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 4.5vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .anatomy-statement em {
+      font-style: italic;
+      color: var(--gold-warm);
+    }
+
+    .anatomy-caption {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text-soft);
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       SCENE 03: A CAIXA VERMELHA (THE SIGNATURE LACQUER UNBOXING)
+       ========================================================================== */
+    .stage-redbox {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 14;
+      background-color: var(--bg-dark);
+    }
+
+    .redbox-viewport {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      perspective: 1200px;
+    }
+
+    .redbox-lacquer-plane {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, var(--lacquer-bright) 0%, var(--lacquer-deep) 60%, #4a030d 100%);
+      opacity: 0;
+      z-index: 1;
+      will-change: opacity;
+    }
+
+    .redbox-container-3d {
+      position: relative;
+      width: clamp(340px, 60vw, 860px);
+      aspect-ratio: 16 / 11;
+      max-height: 68vh;
+      z-index: 5;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .redbox-inner-feast {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.85), 0 0 40px rgba(200, 16, 46, 0.4);
+      border: 2px solid rgba(244, 243, 240, 0.15);
+      z-index: 2;
+    }
+
+    .redbox-combo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: saturate(1.12) brightness(0.95);
+      will-change: transform;
+    }
+
+    .redbox-lid-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #d31232 0%, #9e071b 60%, #680210 100%);
+      border-radius: 8px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,255,255,0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transform-origin: top center;
+      will-change: transform, opacity;
+      cursor: pointer;
+    }
+
+    .lid-brand-emboss {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      color: var(--text-main);
+      user-select: none;
+    }
+
+    .lid-kanji {
+      font-family: var(--font-kanji);
+      font-size: 1.8rem;
+      color: var(--gold-warm);
+      letter-spacing: 0.3em;
+    }
+
+    .lid-brand {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .lid-seal {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--gold-warm);
+      border-top: 1px solid rgba(226, 192, 141, 0.4);
+      border-bottom: 1px solid rgba(226, 192, 141, 0.4);
+      padding: 4px 16px;
+      margin-top: 4px;
+    }
+
+    .redbox-narrative {
+      position: absolute;
+      bottom: clamp(24px, 4vh, 48px);
+      left: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 12;
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      will-change: transform, opacity;
+    }
+
+    .redbox-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .redbox-headline em {
+      font-style: italic;
+      color: var(--gold-warm);
+    }
+
+    .redbox-sub {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      max-width: 620px;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       SCENE 04: A NOITE NO SALÃO (AMBIENT LIGHT TEMPERATURE SHIFT)
+       ========================================================================== */
+    .stage-dining {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 16;
+      background-color: var(--bg-dark);
+    }
+
+    .dining-viewport {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(32px, 6vw, 80px);
+    }
+
+    .dining-media-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .dining-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.4) saturate(0.8) sepia(0);
+      will-change: filter, transform;
+    }
+
+    .dining-light-cone {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 65% 40%, rgba(255, 175, 75, 0.42) 0%, rgba(255, 120, 30, 0.15) 45%, transparent 72%);
+      opacity: 0;
+      mix-blend-mode: color-dodge;
+      z-index: 2;
+      pointer-events: none;
+      transform-origin: 65% 40%;
+      will-change: transform, opacity;
+    }
+
+    .dining-atmosphere {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(180deg, rgba(7,7,9,0.85) 0%, transparent 35%, rgba(7,7,9,0.92) 100%),
+        radial-gradient(ellipse at 30% 80%, rgba(7,7,9,0.9) 0%, transparent 60%);
       z-index: 3;
       pointer-events: none;
     }
 
-    /* LACQUER RED SPATIAL DATUM LINE */
-    .spatial-datum-red {
-      position: absolute;
-      left: clamp(24px, 4vw, 52px);
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, transparent 0%, var(--lacquer-red) 12%, var(--lacquer-red-glow) 68%, transparent 100%);
-      opacity: 0.7;
-      z-index: 5;
-    }
-
-    /* PERIMETER ARCHITECTURAL NOTATIONS */
-    .perimeter-frame {
-      position: absolute;
-      inset: clamp(12px, 2vw, 24px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      pointer-events: none;
+    .dining-copy-wrap {
+      position: relative;
       z-index: 10;
-    }
-
-    .corner-mark {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-color: var(--lacquer-red);
-    }
-    .corner-tl { top: -1px; left: -1px; border-top: 2px solid var(--lacquer-red); border-left: 2px solid var(--lacquer-red); }
-    .corner-tr { top: -1px; right: -1px; border-top: 2px solid var(--lacquer-red); border-right: 2px solid var(--lacquer-red); }
-    .corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--lacquer-red); border-left: 2px solid var(--lacquer-red); }
-    .corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--lacquer-red); border-right: 2px solid var(--lacquer-red); }
-
-    /* EDITORIAL HEADER */
-    .editorial-header {
-      position: relative;
-      z-index: 20;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .brand-identity {
+      max-width: 600px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
-    }
-
-    .brand-kanji-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.3rem, 1.8vw, 1.8rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: #ffffff;
-      line-height: 1;
-    }
-
-    .brand-kanji-stamp {
-      font-family: var(--font-kanji);
-      color: var(--lacquer-red-glow);
-      font-size: 1.1rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-    }
-
-    .brand-descriptor {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--gold-pale);
-      font-weight: 600;
-    }
-
-    .header-metadata {
-      text-align: right;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-weight: 500;
-    }
-
-    .header-metadata strong {
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    /* KANJI BACKGROUND WATERMARK */
-    .kanji-watermark {
-      position: absolute;
-      right: 5%;
-      top: 12%;
-      font-family: var(--font-kanji);
-      font-size: clamp(7rem, 16vw, 20rem);
-      font-weight: 900;
-      color: rgba(255, 255, 255, 0.03);
-      line-height: 1;
-      writing-mode: vertical-rl;
-      pointer-events: none;
-      z-index: 4;
-      user-select: none;
-    }
-
-    /* MAIN EDITORIAL BODY & HEADLINE */
-    .editorial-main {
-      position: relative;
-      z-index: 20;
-      max-width: 1100px;
-      margin-top: auto;
-      margin-bottom: clamp(20px, 3.5vh, 44px);
-      padding-left: clamp(16px, 2.2vw, 32px);
-    }
-
-    .pre-headline {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-      margin-bottom: clamp(12px, 1.8vh, 18px);
-    }
-
-    .pre-headline::before {
-      content: '';
-      display: inline-block;
-      width: 20px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .headline-monumental {
-      font-family: var(--font-display);
-      font-size: clamp(2.6rem, 6.5vw, 7.2rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.92;
-      letter-spacing: -0.035em;
-      color: #ffffff;
-      margin-bottom: clamp(18px, 2.8vh, 28px);
-      text-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.9);
-    }
-
-    .headline-line-stroke {
-      display: inline-block;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
-      letter-spacing: -0.02em;
-    }
-
-    .headline-line-red {
-      display: inline-block;
-      color: var(--lacquer-red-glow);
-    }
-
-    .editorial-statement-grid {
-      display: grid;
-      grid-template-columns: minmax(280px, 520px) auto;
-      gap: clamp(24px, 4vw, 56px);
-      align-items: flex-end;
-    }
-
-    .statement-copy {
-      font-size: clamp(0.92rem, 1.05vw, 1.08rem);
-      font-weight: 400;
-      line-height: 1.55;
-      color: rgba(245, 245, 247, 0.88);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    }
-
-    .statement-copy strong {
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    .editorial-action-link {
-      display: inline-flex;
-      align-items: center;
       gap: 14px;
-      color: #ffffff;
-      text-decoration: none;
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(0.82rem, 0.95vw, 0.95rem);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--lacquer-red);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      width: fit-content;
-      white-space: nowrap;
+      will-change: transform, opacity;
     }
 
-    .editorial-action-link:hover {
-      border-bottom-color: var(--gold);
-      color: var(--gold-pale);
-      transform: translateX(6px);
+    .dining-badge-time {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--gold-warm);
     }
 
-    .action-arrow {
-      font-size: 1.1rem;
-      transition: transform 0.3s ease;
-      color: var(--lacquer-red-glow);
+    .dining-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.15;
     }
 
-    .editorial-action-link:hover .action-arrow {
-      transform: translateX(4px);
-      color: var(--gold);
+    .dining-title em {
+      font-style: italic;
+      color: var(--gold-warm);
     }
 
-    /* DISCREET EDITORIAL LEDGER (BOTTOM OF THE FRAME) */
-    .editorial-ledger {
-      position: relative;
-      z-index: 20;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      padding-top: clamp(14px, 1.8vh, 20px);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(16px, 3vw, 36px);
-    }
-
-    .ledger-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .ledger-index {
-      font-size: 0.64rem;
-      font-weight: 800;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--lacquer-red-glow);
-    }
-
-    .ledger-val {
-      font-size: clamp(0.76rem, 0.85vw, 0.86rem);
-      font-weight: 500;
-      color: rgba(245, 245, 247, 0.92);
-      line-height: 1.4;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
-    }
-
-    .ledger-val strong {
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    .ledger-val a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .ledger-val a:hover {
-      color: var(--gold-pale);
-      text-decoration: underline;
+    .dining-address {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      font-weight: 300;
     }
 
     /* ==========================================================================
-       COMMON EDITORIAL SCENE ARCHITECTURE
+       SCENE 05 / FINAL: MONUMENTAL CAMPAIGN POSTER CLOSURE
        ========================================================================== */
-    .scene-container {
+    .stage-poster {
       position: relative;
       width: 100vw;
-      padding: clamp(70px, 9vw, 130px) clamp(24px, 4vw, 52px);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      background-color: var(--bg);
-      overflow: hidden;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 18;
+      background-color: var(--bg-dark);
     }
 
-    .scene-datum-line {
+    .poster-viewport {
       position: absolute;
-      left: clamp(24px, 4vw, 52px);
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(180deg, rgba(200, 16, 46, 0.5) 0%, rgba(200, 16, 46, 0.1) 100%);
-      pointer-events: none;
-    }
-
-    .scene-inner {
-      max-width: 1360px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 10;
-    }
-
-    .scene-header-block {
-      margin-bottom: clamp(36px, 5vw, 64px);
-    }
-
-    .scene-numeral {
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--lacquer-red-glow);
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .scene-title-monumental {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4.5vw, 4.2rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.03em;
-      line-height: 0.96;
-      color: #ffffff;
-    }
-
-    .scene-title-monumental span {
-      color: var(--gold-pale);
-      font-weight: 800;
-    }
-
-    /* SCENE 02: O CORTE & A MATÉRIA PRIMA */
-    .scene-craft-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: clamp(32px, 6vw, 80px);
-      align-items: center;
-    }
-
-    .craft-narrative {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(20px, 3vh, 32px);
-    }
-
-    .craft-kanji-stamp {
-      font-family: var(--font-kanji);
-      font-size: 2.5rem;
-      color: rgba(200, 16, 46, 0.8);
-      line-height: 1;
-    }
-
-    .craft-headline {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: #ffffff;
-    }
-
-    .craft-headline em {
-      font-style: normal;
-      color: var(--lacquer-red-glow);
-    }
-
-    .craft-body {
-      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-      line-height: 1.65;
-      color: rgba(245, 245, 247, 0.8);
-    }
-
-    .craft-body strong {
-      color: #ffffff;
-    }
-
-    .craft-specs-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 24px;
-    }
-
-    .craft-spec-item {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 16px;
-      font-size: 0.85rem;
-    }
-
-    .craft-spec-tag {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    .craft-spec-desc {
-      color: rgba(245, 245, 247, 0.85);
-      line-height: 1.4;
-    }
-
-    .craft-media-frame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/5;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: #000;
-    }
-
-    .craft-media-img {
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: saturate(1.2) contrast(1.1);
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .craft-media-frame:hover .craft-media-img {
-      transform: scale(1.05);
-    }
-
-    .media-annotation {
-      position: absolute;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(4, 4, 6, 0.85);
-      backdrop-filter: blur(8px);
-      padding: 6px 14px;
-      border-left: 2px solid var(--lacquer-red-glow);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #ffffff;
-      pointer-events: none;
-    }
-
-    .annotation-01 { top: 12%; left: 8%; }
-    .annotation-02 { bottom: 14%; right: 8%; }
-
-    /* SCENE 03: O ÍNDICE AUTORAL */
-    .scene-catalogue {
-      background-color: #020203;
-    }
-
-    .catalogue-layout {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: clamp(32px, 5vw, 70px);
-      align-items: center;
-    }
-
-    .catalogue-index-list {
       display: flex;
       flex-direction: column;
-    }
-
-    .catalogue-item {
-      padding: clamp(20px, 3vh, 32px) 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .catalogue-item:first-child {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .catalogue-item-header {
-      display: flex;
-      align-items: baseline;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-
-    .catalogue-item-idx {
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 900;
-      color: var(--lacquer-red-glow);
-      letter-spacing: 0.2em;
-    }
-
-    .catalogue-item-name {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.2vw, 2.1rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      color: rgba(255, 255, 255, 0.7);
-      transition: color 0.3s ease, transform 0.3s ease;
-      flex-grow: 1;
-    }
-
-    .catalogue-item-kanji {
-      font-family: var(--font-kanji);
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.25);
-    }
-
-    .catalogue-item-desc {
-      font-size: 0.88rem;
-      color: rgba(245, 245, 247, 0.55);
-      line-height: 1.5;
-      max-width: 540px;
-      transition: color 0.3s ease;
-    }
-
-    .catalogue-item.active .catalogue-item-name,
-    .catalogue-item:hover .catalogue-item-name {
-      color: #ffffff;
-      transform: translateX(8px);
-    }
-
-    .catalogue-item.active .catalogue-item-desc,
-    .catalogue-item:hover .catalogue-item-desc {
-      color: rgba(245, 245, 247, 0.9);
-    }
-
-    .catalogue-item.active {
-      border-bottom-color: var(--lacquer-red);
-    }
-
-    .catalogue-visual-stage {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1/1;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      overflow: hidden;
-      background: #000000;
-    }
-
-    .catalogue-img-layer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(1.2) contrast(1.12);
-      opacity: 0;
-      transform: scale(1.06);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .catalogue-img-layer.active {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .catalogue-visual-stamp {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      z-index: 10;
-      background: rgba(4, 4, 6, 0.9);
-      backdrop-filter: blur(8px);
-      padding: 8px 16px;
-      border-left: 2px solid var(--gold);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-pale);
-    }
-
-    /* SCENE 04: O VEREDITO REAL */
-    .scene-verdict {
-      background: #050508;
-      position: relative;
-      padding: clamp(80px, 10vw, 150px) clamp(24px, 4vw, 52px);
-    }
-
-    .verdict-backdrop {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(0.8) brightness(0.2) contrast(1.2);
-      opacity: 0.45;
-      pointer-events: none;
-    }
-
-    .verdict-inner {
-      position: relative;
-      z-index: 10;
-      max-width: 1100px;
-      margin: 0 auto;
+      align-items: center;
+      padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 48px);
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(24px, 4vh, 40px);
+      z-index: 10;
     }
 
-    .verdict-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .verdict-quote {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 4.8rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      color: #ffffff;
-      text-shadow: 0 10px 40px rgba(0,0,0,0.9);
-    }
-
-    .verdict-quote em {
-      font-style: normal;
-      color: var(--lacquer-red-glow);
-    }
-
-    .verdict-author {
-      font-size: 0.88rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(245, 245, 247, 0.9);
-      font-weight: 600;
-    }
-
-    .verdict-author strong {
-      color: #ffffff;
-    }
-
-    .verdict-metrics-row {
-      display: flex;
-      align-items: center;
-      gap: clamp(24px, 5vw, 64px);
-      margin-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      padding-top: 28px;
-    }
-
-    .metric-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .metric-value {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-      font-weight: 900;
-      color: #ffffff;
-      line-height: 1;
-    }
-
-    .metric-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* SCENE 05: AS MODALIDADES */
-    .scene-modes-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: clamp(36px, 6vw, 80px);
-      align-items: center;
-    }
-
-    .modes-media-stack {
-      position: relative;
+    .poster-bg-media {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      aspect-ratio: 16/11;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      height: 100%;
+      z-index: 1;
+      opacity: 0.35;
     }
 
-    .modes-media-img {
+    .poster-bg-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(1.15) contrast(1.1);
+      filter: saturate(0.9) brightness(0.65);
     }
 
-    .modes-info-column {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(24px, 3.5vh, 36px);
+    .poster-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(7,7,9,0.7) 0%, var(--bg-dark) 90%);
+      z-index: 2;
     }
 
-    .mode-item {
+    .poster-brand-anchor {
+      position: relative;
+      z-index: 5;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 6px;
-      border-left: 2px solid rgba(255, 255, 255, 0.1);
-      padding-left: 20px;
-      transition: border-left-color 0.3s ease;
     }
 
-    .mode-item:hover {
-      border-left-color: var(--lacquer-red-glow);
+    .poster-brand-kanji {
+      font-family: var(--font-kanji);
+      font-size: 1.3rem;
+      color: var(--lacquer-bright);
+      letter-spacing: 0.25em;
     }
 
-    .mode-tag {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
+    .poster-brand-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
     }
 
-    .mode-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.2rem, 1.8vw, 1.5rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #ffffff;
+    .poster-center-block {
+      position: relative;
+      z-index: 5;
+      max-width: 840px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .poster-campaign-statement {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.12;
       letter-spacing: -0.01em;
     }
 
-    .mode-desc {
-      font-size: 0.88rem;
-      color: rgba(245, 245, 247, 0.75);
-      line-height: 1.5;
+    .poster-campaign-statement em {
+      font-style: italic;
+      color: var(--gold-warm);
     }
 
-    /* SCENE 06: O GRAND FINALE */
-    .scene-finale {
-      position: relative;
-      background-color: #020204;
-      padding: clamp(90px, 12vw, 160px) clamp(24px, 4vw, 52px) clamp(60px, 6vw, 80px);
-      overflow: hidden;
-    }
-
-    .finale-bg {
-      position: absolute;
-      inset: 0;
+    .poster-direct-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: saturate(1.2) brightness(0.22) contrast(1.2);
-      opacity: 0.5;
-      pointer-events: none;
     }
 
-    .finale-atmosphere {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(200, 16, 46, 0.25) 0%, rgba(4,4,6,0.95) 75%);
-      pointer-events: none;
-    }
-
-    .finale-inner {
-      position: relative;
-      z-index: 10;
-      max-width: 1200px;
-      margin: 0 auto;
+    .action-btn {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: clamp(32px, 5vh, 56px);
+      padding: 16px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      min-width: 260px;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, background-color 0.3s ease;
     }
 
-    .finale-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6.5vw, 6.5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.02;
-      letter-spacing: -0.03em;
+    .action-delivery {
+      background: linear-gradient(135deg, var(--lacquer-bright) 0%, var(--lacquer-deep) 100%);
       color: #ffffff;
-      text-shadow: 0 10px 40px rgba(0,0,0,0.9);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 12px 32px rgba(200, 16, 46, 0.4);
     }
 
-    .finale-headline span {
-      color: var(--lacquer-red-glow);
-      display: block;
-      margin-top: 6px;
+    .action-delivery:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 44px rgba(200, 16, 46, 0.65);
     }
 
-    .finale-channels-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(20px, 3vw, 40px);
-      width: 100%;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      padding-top: clamp(24px, 4vh, 40px);
+    .action-phone {
+      background: rgba(244, 243, 240, 0.06);
+      color: var(--text-main);
+      border: 1px solid rgba(244, 243, 240, 0.2);
+      backdrop-filter: blur(8px);
     }
 
-    .channel-card {
+    .action-phone:hover {
+      background: rgba(244, 243, 240, 0.12);
+      border-color: var(--gold-warm);
+      transform: translateY(-3px);
+    }
+
+    .btn-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-sub {
+      font-size: 0.8rem;
+      color: var(--gold-warm);
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    .action-delivery .btn-sub {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .poster-ground-facts {
+      position: relative;
+      z-index: 5;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.3s ease;
-    }
-
-    .channel-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .channel-num {
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--lacquer-red-glow);
-    }
-
-    .channel-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 1.4vw, 1.35rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #ffffff;
-      letter-spacing: -0.01em;
-    }
-
-    .channel-link-text {
-      font-size: 0.88rem;
-      color: var(--gold-pale);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
       gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      line-height: 1.5;
     }
 
-    .channel-card:hover .channel-link-text {
+    .poster-ground-facts strong {
       color: #ffffff;
     }
 
-    /* MINIMAL EDITORIAL FOOTER */
-    .editorial-footer {
-      position: relative;
-      z-index: 10;
-      max-width: 1200px;
-      margin: clamp(60px, 8vh, 100px) auto 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .footer-stamp {
-      font-family: var(--font-kanji);
-      color: var(--lacquer-red-glow);
-      font-size: 0.95rem;
-      margin-right: 8px;
-    }
-
-    /* RESPONSIVE ADAPTATIONS */
-    @media (max-width: 992px) {
-      .scene-craft-grid,
-      .catalogue-layout,
-      .scene-modes-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    /* RESPONSIVE MOBILE STYLES */
+    @media (max-width: 768px) {
+      .site-nav {
+        padding: 20px 24px;
       }
-
-      .finale-channels-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .editorial-footer {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .viewport-canvas {
-        height: auto;
-        min-height: 100vh;
-        padding: 28px 18px;
-      }
-
-      .headline-monumental {
-        font-size: clamp(2.2rem, 9.8vw, 3.4rem);
-        line-height: 0.98;
-        letter-spacing: -0.025em;
-      }
-
-      .headline-line-stroke {
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
-      }
-
-      .editorial-statement-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .editorial-ledger {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        margin-top: 28px;
-      }
-
-      .header-metadata {
+      .nav-location {
         display: none;
       }
-
-      .spatial-datum-red,
-      .scene-datum-line {
-        left: 18px;
+      .opening-content {
+        left: 24px;
+        right: 24px;
+        bottom: 32px;
       }
-
-      .editorial-main {
-        padding-left: 12px;
+      .opening-note {
+        display: none;
       }
-
-      .verdict-metrics-row {
-        flex-direction: column;
-        gap: 24px;
+      .anatomy-editorial {
+        left: 24px;
+        right: 24px;
+      }
+      .redbox-container-3d {
+        width: 90vw;
+        max-height: 52vh;
+      }
+      .dining-viewport {
+        padding: 24px;
+      }
+      .poster-viewport {
+        padding: 32px 20px;
+      }
+      .action-btn {
+        width: 100%;
+        min-width: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="viewport-canvas">
+  <!-- =========================================================================
+       SCENE 01: OPENING EXPERIENCE (EXPLORE 01 LOCKED)
+       ========================================================================= -->
+  <section class="viewport-stage stage-opening" data-stage="opening">
+    <div class="opening-viewport">
+      
+      <!-- LAYER 0: INCOMING SCENE 02 BASE (Guarantees zero blank state at all times) -->
+      <div class="opening-base-incoming">
+        <div class="anatomy-strip-wrap base-strip">
+          <img class="anatomy-strip-img" src="imagens/imgi_16_660665702_18418324108125243_6473536147567592195_n.jpg" alt="Anatomia dos Cortes de Salmão e Peixes Frescos" />
+        </div>
+        <div class="anatomy-vignette"></div>
+      </div>
 
-    <!-- FULL BLEED MATÉRIA: GASTRONOMIA REAL EM ALTA RESOLUÇÃO -->
-    <img src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="Aji Sugoi — A Famosa Caixa Vermelha" class="bg-food-fullscreen">
-    
-    <!-- EDITORIAL ATMOSPHERE OVERLAY -->
-    <div class="editorial-atmosphere"></div>
-    <div class="film-grain"></div>
+      <!-- LAYER 1: EXPLORE 01 HERO MEDIA (Clipped along physical shear) -->
+      <div class="opening-media-wrap">
+        <img class="opening-img" src="imagens/imgi_42_639856189_18564622342037059_7155013422789376632_n.jpg" alt="Aji Sugoi Frescor e Matéria" />
+        <div class="opening-atmosphere"></div>
+      </div>
 
-    <!-- SPATIAL LACQUER RED DATUM -->
-    <div class="spatial-datum-red"></div>
+      <!-- LAYER 2: THE PHYSICAL RED LACQUER SHEAR BLADE -->
+      <div class="opening-shear-blade"></div>
 
-    <!-- ARCHITECTURAL PERIMETER FRAME -->
-    <div class="perimeter-frame">
-      <div class="corner-mark corner-tl"></div>
-      <div class="corner-mark corner-tr"></div>
-      <div class="corner-mark corner-bl"></div>
-      <div class="corner-mark corner-br"></div>
+      <header class="site-nav">
+        <a href="#" class="brand-mark">
+          <span class="brand-name">Aji Sugoi</span>
+          <span class="brand-kanji">味すごい</span>
+        </a>
+        <span class="nav-location">São Bernardo do Campo &bull; Bairro dos Casa</span>
+      </header>
+
+      <main class="opening-content">
+        <h1 class="opening-title">
+          Onde o peixe fresco é a <em>própria matéria</em> da mesa.
+        </h1>
+        <p class="opening-lead">
+          Cortes fartos de salmão, peixes brancos e combinados autorais preparados diariamente. Servido em nosso salão e entregue com todo o rigor em sua casa.
+        </p>
+        <a href="https://ajisugoidelivery.com.br" target="_blank" class="opening-action">
+          Pedir pelo delivery oficial &rarr;
+        </a>
+      </main>
+
+      <aside class="opening-note">
+        <strong>Atendimento a partir das 17:30</strong>
+        Rua Wadia Jafete Assad, 20 &bull; (11) 4355-7193
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SCENE 02: ANATOMIA DOS CORTES (SCROLL-PINNED FLOW)
+       ========================================================================= -->
+  <section class="viewport-stage stage-anatomy" data-stage="anatomy">
+    <div class="anatomy-viewport">
+      
+      <div class="anatomy-strip-wrap">
+        <img class="anatomy-strip-img" src="imagens/imgi_16_660665702_18418324108125243_6473536147567592195_n.jpg" alt="Anatomia dos Cortes de Salmão e Peixes Frescos" />
+      </div>
+      <div class="anatomy-vignette"></div>
+
+      <div class="anatomy-editorial">
+        <span class="anatomy-kanji">鮮度と厚み</span>
+        <h2 class="anatomy-statement">
+          O corte não é fino.<br><em>É farto.</em>
+        </h2>
+        <p class="anatomy-caption">
+          Peixe fresco selecionado no dia, fatiado com a espessura e a generosidade que São Bernardo do Campo conhece desde 2018.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SCENE 03: A FAMOSA CAIXA VERMELHA (THE SIGNATURE LACQUER UNBOXING)
+       ========================================================================= -->
+  <section class="viewport-stage stage-redbox" data-stage="redbox">
+    <div class="redbox-viewport">
+      
+      <div class="redbox-lacquer-plane"></div>
+
+      <div class="redbox-container-3d">
+        <!-- Combinado Interno em Glória Total -->
+        <div class="redbox-inner-feast">
+          <img class="redbox-combo-img" src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="A Famosa Caixa Vermelha Aji Sugoi" />
+        </div>
+
+        <!-- A Tampa Cerimonial que Abre no Scroll -->
+        <div class="redbox-lid-layer">
+          <div class="lid-brand-emboss">
+            <span class="lid-kanji">味すごい</span>
+            <span class="lid-brand">AJI SUGOI</span>
+            <span class="lid-seal">EMBALAGEM RÍGIDA ORIGINAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="redbox-narrative">
+        <h2 class="redbox-headline">
+          A famosa caixa vermelha.<br><em>O rigor do salão na sua mesa.</em>
+        </h2>
+        <p class="redbox-sub">
+          Embalagem rígida sob medida que impede o deslocamento das peças e preserva a textura e o frescor até a sua mesa.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SCENE 04: A NOITE NO SALÃO (AMBIENT LIGHT TEMPERATURE SHIFT)
+       ========================================================================= -->
+  <section class="viewport-stage stage-dining" data-stage="dining">
+    <div class="dining-viewport">
+      
+      <div class="dining-media-wrap">
+        <img class="dining-bg-img" src="imagens/imgi_51_625949395_18358099891202664_240056681359955242_n.jpg" alt="Salão Aji Sugoi Noturno" />
+        <div class="dining-light-cone"></div>
+        <div class="dining-atmosphere"></div>
+      </div>
+
+      <div class="dining-copy-wrap">
+        <span class="dining-badge-time">TERÇA A DOMINGO &bull; A PARTIR DAS 17:30</span>
+        <h2 class="dining-title">
+          A mesa do salão.<br><em>Rodízio e criações autorais.</em>
+        </h2>
+        <p class="dining-address">
+          Rua Wadia Jafete Assad, 20 &mdash; Bairro dos Casa, São Bernardo do Campo.<br>
+          Ambiente acolhedor e atendimento tradicional da casa.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SCENE 05 / FINAL: MONUMENTAL CAMPAIGN POSTER CLOSURE
+       ========================================================================= -->
+  <footer class="viewport-stage stage-poster" data-stage="poster">
+    <div class="poster-bg-media">
+      <img class="poster-bg-img" src="imagens/imgi_14_649538659_18058516667398628_8028280030694586009_n.jpg" alt="Aji Sugoi Mesa Completa" />
+      <div class="poster-vignette"></div>
     </div>
 
-    <!-- VERTICAL JAPANESE KANJI CALLIGRAPHY WATERMARK -->
-    <div class="kanji-watermark">味すごい</div>
-
-    <!-- 01. EDITORIAL HEADER (NO BADGES, NO PILLS) -->
-    <header class="editorial-header">
-      <div class="brand-identity">
-        <div class="brand-kanji-row">
-          <span class="brand-title">AJI SUGOI</span>
-          <span class="brand-kanji-stamp">味すごい</span>
-        </div>
-        <span class="brand-descriptor">Gastronomia Japonesa Autoral • SBC</span>
+    <div class="poster-viewport">
+      
+      <div class="poster-brand-anchor">
+        <span class="poster-brand-kanji">味すごい</span>
+        <h2 class="poster-brand-title">Aji Sugoi</h2>
       </div>
 
-      <div class="header-metadata">
-        <span>SÃO BERNARDO DO CAMPO — SP</span><br>
-        <strong>BALCÃO, SALÃO &amp; EMBALAGEM RÍGIDA</strong>
-      </div>
-    </header>
-
-    <!-- 02. MONUMENTAL HEADLINE & MATÉRIA INTERACTION (NO BOXES, NO FLOATING CARDS) -->
-    <main class="editorial-main">
-      <div class="pre-headline">
-        ALTA GASTRONOMIA &bull; FARTURA INEGOCIÁVEL
-      </div>
-
-      <h1 class="headline-monumental">
-        A FAMOSA<br>
-        <span class="headline-line-red">CAIXA</span> <span class="headline-line-stroke">VERMELHA.</span>
-      </h1>
-
-      <div class="editorial-statement-grid">
-        <p class="statement-copy">
-          Combinados autorais concebidos como <strong>arquitetura de sabor</strong>. Peixe fresco em cortes generosos, montados na emblemática embalagem rígida que preserva a textura, a temperatura e a estética de cada peça até a sua mesa.
+      <div class="poster-center-block">
+        <p class="poster-campaign-statement">
+          A fartura tem endereço e <em>hora marcada</em>.
         </p>
 
-        <div>
-          <a href="https://ajisugoidelivery.com.br" target="_blank" class="editorial-action-link">
-            Explorar Menu &amp; Delivery <span class="action-arrow">&rarr;</span>
+        <div class="poster-direct-actions">
+          <a href="https://ajisugoidelivery.com.br" target="_blank" class="action-btn action-delivery">
+            <span class="btn-label">Pedir no Delivery Oficial</span>
+            <span class="btn-sub">ajisugoidelivery.com.br &rarr;</span>
+          </a>
+          <a href="tel:1143557193" class="action-btn action-phone">
+            <span class="btn-label">Salão & Atendimento</span>
+            <span class="btn-sub">(11) 4355-7193</span>
           </a>
         </div>
       </div>
-    </main>
 
-    <!-- 03. INTEGRATED EDITORIAL LEDGER (DISCREET ON CANVAS MARGIN) -->
-    <footer class="editorial-ledger">
-      <div class="ledger-item">
-        <span class="ledger-index">01 / LOCALIZAÇÃO</span>
-        <div class="ledger-val">
-          <strong>Rua Wadia Jafete Assad, 20</strong> — Bairro dos Casa, São Bernardo do Campo
-        </div>
-      </div>
-
-      <div class="ledger-item">
-        <span class="ledger-index">02 / EXPERIÊNCIA</span>
-        <div class="ledger-val">
-          Salão intimista, retirada balcão e delivery oficial com embalagem estruturada.
-        </div>
-      </div>
-
-      <div class="ledger-item">
-        <span class="ledger-index">03 / CONTATO &amp; PEDIDOS</span>
-        <div class="ledger-val">
-          <a href="https://ajisugoidelivery.com.br" target="_blank"><strong>ajisugoidelivery.com.br</strong></a> &bull; <a href="tel:1143557193">(11) 4355-7193</a>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- ========================================================================
-       CENA 02: A MATÉRIA DO CORTE (O RITUAL DO PEIXE FRESCO)
-       ======================================================================== -->
-  <section class="scene-container" id="craft">
-    <div class="scene-datum-line"></div>
-    <div class="scene-inner">
-
-      <div class="scene-header-block">
-        <span class="scene-numeral">CENA 02 // O RIGOR DA MATÉRIA</span>
-        <h2 class="scene-title-monumental">O CORTE NÃO É APENAS TÉCNICA.<br><span>É O COMPROMISSO COM A FARTURA.</span></h2>
-      </div>
-
-      <div class="scene-craft-grid">
-        <div class="craft-narrative">
-          <span class="craft-kanji-stamp">鮮魚</span>
-          <p class="craft-body" style="font-size: clamp(1.05rem, 1.25vw, 1.2rem); line-height: 1.6;">
-            No Aji Sugoi, a culinária japonesa não é tratada como porção minimalista fria, mas como uma <strong>experiência de abundância e frescor absoluto</strong>. Cada lombo de salmão e peixe branco é selecionado diariamente, fatiado na espessura generosa tradicional e servido no ápice de sua textura — sem lâminas translúcidas ou economia de matéria.
-          </p>
-
-          <div class="craft-specs-list">
-            <div class="craft-spec-item">
-              <span class="craft-spec-tag">[01 / SELEÇÃO]</span>
-              <span class="craft-spec-desc">Recebimento diário de peixes inteiros e cortes limpos diretamente no balcão de preparo.</span>
-            </div>
-            <div class="craft-spec-item">
-              <span class="craft-spec-tag">[02 / LÂMINA]</span>
-              <span class="craft-spec-desc">Espessura encorpada que preserva a suculência, o óleo natural do salmão e a firmeza da fibra.</span>
-            </div>
-            <div class="craft-spec-item">
-              <span class="craft-spec-tag">[03 / AUTORIA]</span>
-              <span class="craft-spec-desc">Finalizações com maçarico de alta precisão, geleias artesanais e toques trufados equilibrados.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="craft-media-frame">
-          <img src="imagens/imgi_42_639856189_18564622342037059_7155013422789376632_n.jpg" alt="Macro Corte de Salmão Fresco Aji Sugoi" class="craft-media-img">
-          <div class="media-annotation annotation-01">
-            <span>[LAT -23.7082° • SBC]</span>
-          </div>
-          <div class="media-annotation annotation-02">
-            <span>CORTE GENEROSO &bull; FRESCOR DIÁRIO</span>
-          </div>
-        </div>
+      <div class="poster-ground-facts">
+        <span>Rua Wadia Jafete Assad, 20 &bull; Bairro dos Casa, São Bernardo do Campo</span>
+        <span>Terça a Domingo a partir das 17:30 &bull; <strong>4,4★ (mais de 860 avaliações)</strong></span>
       </div>
 
     </div>
-  </section>
+  </footer>
 
-  <!-- ========================================================================
-       CENA 03: O ÍNDICE AUTORAL (VISUAL SELECTOR DE CARDÁPIO)
-       ======================================================================== -->
-  <section class="scene-container scene-catalogue" id="menu">
-    <div class="scene-datum-line"></div>
-    <div class="scene-inner">
+  <!-- Scripts: Lenis + GSAP + ScrollTrigger -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-      <div class="scene-header-block">
-        <span class="scene-numeral">CENA 03 // CATÁLOGO AUTORAL</span>
-        <h2 class="scene-title-monumental">A ARQUITETURA DO CARDÁPIO.<br><span>SELEÇÃO DE PILARES EXCLUSIVOS.</span></h2>
-      </div>
-
-      <div class="catalogue-layout">
-        
-        <!-- Interactive List -->
-        <div class="catalogue-index-list">
-
-          <div class="catalogue-item active" data-target="0">
-            <div class="catalogue-item-header">
-              <span class="catalogue-item-idx">01</span>
-              <h3 class="catalogue-item-name">A Famosa Caixa Vermelha</h3>
-              <span class="catalogue-item-kanji">赤箱</span>
-            </div>
-            <p class="catalogue-item-desc">
-              A assinatura incontestável do Aji Sugoi. Combinados fartos de sushis, sashimis e especiais montados em embalagem rígida estruturada.
-            </p>
-          </div>
-
-          <div class="catalogue-item" data-target="1">
-            <div class="catalogue-item-header">
-              <span class="catalogue-item-idx">02</span>
-              <h3 class="catalogue-item-name">Joys &amp; Especiais Maçaricados</h3>
-              <span class="catalogue-item-kanji">炙り</span>
-            </div>
-            <p class="catalogue-item-desc">
-              Lâminas nobres de salmão envoltas em arroz temperado, maçaricadas no ponto exato com geleias autorais e toques cítricos.
-            </p>
-          </div>
-
-          <div class="catalogue-item" data-target="2">
-            <div class="catalogue-item-header">
-              <span class="catalogue-item-idx">03</span>
-              <h3 class="catalogue-item-name">O Rodízio da Casa &amp; Balcão</h3>
-              <span class="catalogue-item-kanji">食べ放題</span>
-            </div>
-            <p class="catalogue-item-desc">
-              Experiência imersiva no salão: sequência completa e contínua de sashimis frescos, pratos quentes e criações do sushiman.
-            </p>
-          </div>
-
-          <div class="catalogue-item" data-target="3">
-            <div class="catalogue-item-header">
-              <span class="catalogue-item-idx">04</span>
-              <h3 class="catalogue-item-name">Yakisoba &amp; Clássicos Quentes</h3>
-              <span class="catalogue-item-kanji">焼きそば</span>
-            </div>
-            <p class="catalogue-item-desc">
-              Porções generosas (até 1.3kg de Yakisoba misto artesanal), hot rolls crocantes e tempurás dourados na temperatura ideal.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- Dynamic Visual Display -->
-        <div class="catalogue-visual-stage">
-          <img src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="A Famosa Caixa Vermelha" class="catalogue-img-layer active" id="cat-img-0">
-          <img src="imagens/imgi_41_626285281_18412266442124354_8606821559424635515_n.jpg" alt="Joys e Especiais Maçaricados" class="catalogue-img-layer" id="cat-img-1">
-          <img src="imagens/imgi_51_625949395_18358099891202664_240056681359955242_n.jpg" alt="O Rodízio da Casa" class="catalogue-img-layer" id="cat-img-2">
-          <img src="imagens/imgi_22_661596242_18594604792035822_3765295711602751819_n.jpg" alt="Yakisoba e Clássicos Quentes" class="catalogue-img-layer" id="cat-img-3">
-          <div class="catalogue-visual-stamp" id="cat-stamp">
-            PILAR 01 &bull; COMBINADO AUTORAL
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       CENA 04: O VEREDITO REAL (PROVA SOCIAL EDITORIAL)
-       ======================================================================== -->
-  <section class="scene-container scene-verdict" id="verdict">
-    <img src="imagens/imgi_27_652008549_18124938691570370_4252929218745402272_n.jpg" alt="Textura de Sushis Aji Sugoi" class="verdict-backdrop">
-    
-    <div class="verdict-inner">
-      <span class="verdict-tag">// PROVA REAL NO GOOGLE MAPS</span>
-      
-      <blockquote class="verdict-quote">
-        “SIMPLESMENTE O <em>MELHOR JAPA</em> DA REGIÃO. ATENDIMENTO E COMIDA EXCEPCIONAL.”
-      </blockquote>
-
-      <div class="verdict-author">
-        <strong>Guilherme Lage</strong> &bull; Local Guide (Google Maps) &bull; Mais de 117 avaliações públicas
-      </div>
-
-      <div class="verdict-metrics-row">
-        <div class="metric-unit">
-          <span class="metric-value">4.4 / 5.0</span>
-          <span class="metric-label">Média de Excelência</span>
-        </div>
-        <div class="metric-unit">
-          <span class="metric-value">+860</span>
-          <span class="metric-label">Avaliações Verificadas</span>
-        </div>
-        <div class="metric-unit">
-          <span class="metric-value">SBC — SP</span>
-          <span class="metric-label">Referência no ABC</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       CENA 05: A CASA & AS MODALIDADES (SALÃO, BALCÃO & DELIVERY)
-       ======================================================================== -->
-  <section class="scene-container" id="experience">
-    <div class="scene-datum-line"></div>
-    <div class="scene-inner">
-
-      <div class="scene-header-block">
-        <span class="scene-numeral">CENA 05 // EXPERIÊNCIA &amp; LOCALIZAÇÃO</span>
-        <h2 class="scene-title-monumental">A CASA NO BAIRRO DOS CASA.<br><span>TRÊS FORMAS DE DEGUSTAR.</span></h2>
-      </div>
-
-      <div class="scene-modes-grid">
-        <div class="modes-media-stack">
-          <img src="imagens/imgi_26_649217078_18054211415480095_4532868103149645191_n.jpg" alt="Apresentação Nobre de Pratos Aji Sugoi" class="modes-media-img">
-        </div>
-
-        <div class="modes-info-column">
-          
-          <div class="mode-item">
-            <span class="mode-tag">MODALIDADE 01</span>
-            <h3 class="mode-title">Salão Intimista &amp; Balcão</h3>
-            <p class="mode-desc">
-              Atendimento presencial no jantar a partir das 17:30. Rodízio completo com reposição contínua ou pratos à la carte servidos com hospitalidade direta.
-            </p>
-          </div>
-
-          <div class="mode-item">
-            <span class="mode-tag">MODALIDADE 02</span>
-            <h3 class="mode-title">Takeout &bull; Retirada Imediata</h3>
-            <p class="mode-desc">
-              Faça o pedido diretamente pelos nossos canais oficiais e retire no balcão com sua Caixa Vermelha perfeitamente selada e fresca.
-            </p>
-          </div>
-
-          <div class="mode-item">
-            <span class="mode-tag">MODALIDADE 03</span>
-            <h3 class="mode-title">Delivery Próprio Especializado</h3>
-            <p class="mode-desc">
-              Logística estruturada que atende todo o raio de São Bernardo do Campo com a embalagem rígida que não deixa os sashimis tombarem.
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       CENA 06: O GRAND FINALE (FECHAMENTO EDITORIAL & CONVERSÃO DIRETA)
-       ======================================================================== -->
-  <section class="scene-finale" id="order">
-    <img src="imagens/imgi_32_626125391_18359017627203400_6039786198122823744_n.jpg" alt="Mesa Farta Aji Sugoi" class="finale-bg">
-    <div class="finale-atmosphere"></div>
-
-    <div class="finale-inner">
-      <span class="scene-numeral">// O PRÓXIMO PASSO</span>
-      
-      <h2 class="finale-headline">
-        PEIXE FRESCO DE VERDADE.
-        <span>PEÇA SUA CAIXA HOJE.</span>
-      </h2>
-
-      <div class="finale-channels-grid">
-        
-        <a href="https://ajisugoidelivery.com.br" target="_blank" class="channel-card">
-          <span class="channel-num">CANAL 01 // PRINCIPAL</span>
-          <span class="channel-title">Cardápio &amp; Delivery</span>
-          <span class="channel-link-text">ajisugoidelivery.com.br &rarr;</span>
-        </a>
-
-        <a href="tel:1143557193" class="channel-card">
-          <span class="channel-num">CANAL 02 // CONTATO DIRETO</span>
-          <span class="channel-title">Telefone &amp; Reservas</span>
-          <span class="channel-link-text">(11) 4355-7193 &rarr;</span>
-        </a>
-
-        <a href="https://maps.google.com/?q=Rua+Wadia+Jafete+Assad+20+Sao+Bernardo+do+Campo" target="_blank" class="channel-card">
-          <span class="channel-num">CANAL 03 // VISITAÇÃO</span>
-          <span class="channel-title">Rua Wadia Jafete Assad, 20</span>
-          <span class="channel-link-text">Bairro dos Casa, SBC &rarr;</span>
-        </a>
-
-      </div>
-
-      <!-- MINIMAL FOOTER -->
-      <footer class="editorial-footer" style="width: 100%;">
-        <div>
-          <span class="footer-stamp">味すごい</span>
-          <span>AJI SUGOI CULINÁRIA JAPONESA</span>
-        </div>
-        <div>
-          <span>TERÇA A DOMINGO &bull; A PARTIR DAS 17:30</span>
-        </div>
-        <div>
-          <span>© 2026 AJI SUGOI. SBC — SP.</span>
-        </div>
-      </footer>
-
-    </div>
-  </section>
-
-  <!-- JAVASCRIPT FOR DYNAMIC INTERACTIONS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const catalogueItems = document.querySelectorAll('.catalogue-item');
-      const catalogueImages = document.querySelectorAll('.catalogue-img-layer');
-      const catalogueStamp = document.getElementById('cat-stamp');
+      gsap.registerPlugin(ScrollTrigger);
 
-      const stamps = [
-        'PILAR 01 • COMBINADO AUTORAL',
-        'PILAR 02 • JOYS & MAÇARICADOS',
-        'PILAR 03 • O RODÍZIO DA CASA',
-        'PILAR 04 • QUENTES & CROCÂNCIA'
-      ];
+      // 1. INITIALIZE LENIS SMOOTH SCROLL
+      const lenis = new Lenis({
+        lerp: 0.08,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.5,
+        smoothWheel: true
+      });
 
-      catalogueItems.forEach((item, index) => {
-        const activate = () => {
-          catalogueItems.forEach(i => i.classList.remove('active'));
-          catalogueImages.forEach(img => img.classList.remove('active'));
+      // Expose globally for automated tests and inspections
+      window.__lenis = lenis;
 
-          item.classList.add('active');
-          const targetImg = document.getElementById(`cat-img-${index}`);
-          if (targetImg) {
-            targetImg.classList.add('active');
-          }
-          if (catalogueStamp && stamps[index]) {
-            catalogueStamp.textContent = stamps[index];
-          }
-        };
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
 
-        item.addEventListener('mouseenter', activate);
-        item.addEventListener('click', activate);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      // 2. CHECK REDUCED MOTION
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        return;
+      }
+
+      // 3. MASTER SCROLL TIMELINES
+
+      // =======================================================================
+      // TIMELINE 1: OPENING -> PHYSICAL SHEAR -> TRANSITION TO SCENE 02
+      // =======================================================================
+      const openingTL = gsap.timeline({
+        scrollTrigger: {
+          id: 'opening',
+          trigger: '.stage-opening',
+          start: 'top top',
+          end: '+=160%',
+          pin: true,
+          scrub: 0.8,
+          anticipatePin: 1
+        }
+      });
+
+      openingTL
+        .to('.opening-content', {
+          y: 50,
+          opacity: 0,
+          duration: 0.35,
+          ease: 'power2.in'
+        }, 0)
+        .to('.opening-note', {
+          y: 35,
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in'
+        }, 0)
+        .to('.opening-img', {
+          scale: 0.94,
+          duration: 0.9,
+          ease: 'power1.out'
+        }, 0.05)
+        .fromTo('.opening-media-wrap',
+          { clipPath: 'polygon(0% 0%, 140% 0%, 115% 100%, 0% 100%)' },
+          { clipPath: 'polygon(0% 0%, -15% 0%, -40% 100%, 0% 100%)', duration: 0.85, ease: 'power2.inOut' },
+          0.12
+        )
+        .fromTo('.opening-shear-blade',
+          { x: '140vw' },
+          { x: '-25vw', duration: 0.85, ease: 'power2.inOut' },
+          0.12
+        );
+
+      // =======================================================================
+      // TIMELINE 2: SCENE 02 ANATOMIA DOS CORTES (HORIZONTAL FLOW)
+      // =======================================================================
+      const anatomyTL = gsap.timeline({
+        scrollTrigger: {
+          id: 'anatomy',
+          trigger: '.stage-anatomy',
+          start: 'top top',
+          end: '+=220%',
+          pin: true,
+          scrub: 0.8,
+          anticipatePin: 1
+        }
+      });
+
+      anatomyTL
+        .fromTo('.anatomy-editorial', 
+          { y: 50, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' }, 0)
+        .fromTo('.anatomy-strip-wrap', 
+          { x: '0vw' }, 
+          { x: '-35vw', duration: 1.0, ease: 'none' }, 0)
+        .to('.anatomy-editorial', {
+          y: -30,
+          opacity: 0.15,
+          duration: 0.35,
+          ease: 'power2.in'
+        }, 0.7);
+
+      // =======================================================================
+      // TIMELINE 3: SCENE 03 A CAIXA VERMELHA (UNBOXING STATE MACHINE)
+      // =======================================================================
+      const redboxTL = gsap.timeline({
+        scrollTrigger: {
+          id: 'redbox',
+          trigger: '.stage-redbox',
+          start: 'top top',
+          end: '+=260%',
+          pin: true,
+          scrub: 0.8,
+          anticipatePin: 1
+        }
+      });
+
+      redboxTL
+        .to('.redbox-lacquer-plane', {
+          opacity: 1,
+          duration: 0.3,
+          ease: 'power1.inOut'
+        }, 0)
+        .to('.redbox-lid-layer', {
+          y: '-125%',
+          rotateX: 18,
+          opacity: 0,
+          duration: 0.65,
+          ease: 'power2.inOut'
+        }, 0.15)
+        .fromTo('.redbox-combo-img', 
+          { scale: 0.9, filter: 'saturate(0.9) brightness(0.8)' }, 
+          { scale: 1.02, filter: 'saturate(1.15) brightness(1.0)', duration: 0.7, ease: 'power2.out' }, 0.2)
+        .fromTo('.redbox-narrative', 
+          { y: 30, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }, 0.45);
+
+      // =======================================================================
+      // TIMELINE 4: SCENE 04 A NOITE NO SALÃO (TEMPERATURE & LIGHT CONE SHIFT)
+      // =======================================================================
+      const diningTL = gsap.timeline({
+        scrollTrigger: {
+          id: 'dining',
+          trigger: '.stage-dining',
+          start: 'top top',
+          end: '+=200%',
+          pin: true,
+          scrub: 0.8,
+          anticipatePin: 1
+        }
+      });
+
+      diningTL
+        .to('.dining-light-cone', {
+          opacity: 1,
+          scale: 1.35,
+          duration: 0.6,
+          ease: 'power2.out'
+        }, 0)
+        .to('.dining-bg-img', {
+          filter: 'brightness(0.95) saturate(1.25) sepia(0.18)',
+          scale: 1.04,
+          duration: 0.8,
+          ease: 'power1.out'
+        }, 0)
+        .fromTo('.dining-copy-wrap', 
+          { y: 40, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.2);
+
+      // =======================================================================
+      // RESIZE OBSERVER DEBOUNCER
+      // =======================================================================
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 200);
       });
     });
   </script>
-
 </body>
 </html>
