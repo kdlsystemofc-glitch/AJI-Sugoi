@@ -45,6 +45,82 @@
       overscroll-behavior: none;
     }
 
+    /* ACCESSIBILITY & FOCUS VISIBLE (GOLD & LACQUER BRAND INTEGRATION) */
+    :focus-visible {
+      outline: 2px solid var(--gold-warm);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -120px;
+      left: 24px;
+      background: linear-gradient(135deg, var(--lacquer-bright) 0%, var(--lacquer-deep) 100%);
+      color: #ffffff;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      z-index: 9999;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7), 0 0 0 1px rgba(226, 192, 141, 0.4);
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus,
+    .skip-link:focus-visible {
+      top: 24px;
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 2px;
+    }
+
+    /* PREFERS REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .opening-content,
+      .opening-note,
+      .anatomy-editorial,
+      .redbox-narrative,
+      .dining-copy-wrap,
+      .poster-center-block {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .opening-media-wrap {
+        clip-path: none !important;
+      }
+
+      .opening-shear-blade {
+        display: none !important;
+      }
+
+      .redbox-lid-layer {
+        display: none !important;
+      }
+
+      .redbox-container-3d {
+        transform: none !important;
+      }
+
+      .dining-dark-overlay {
+        opacity: 0.35 !important;
+      }
+
+      .dining-light-cone {
+        opacity: 0.75 !important;
+        transform: none !important;
+      }
+    }
+
     /* LENIS SMOOTH SCROLL STYLES */
     html.lenis, html.lenis body {
       height: auto;
@@ -881,159 +957,166 @@
 </head>
 <body>
 
-  <!-- =========================================================================
-       SCENE 01: OPENING EXPERIENCE (EXPLORE 01 LOCKED)
-       ========================================================================= -->
-  <section class="stage-opening" data-stage="opening">
-    <div class="opening-viewport">
-      
-      <!-- LAYER 0: INCOMING SCENE 02 MEDIA (Guarantees 100% media coverage across entire shear) -->
-      <div class="opening-incoming-layer">
-        <div class="incoming-media-track">
-          <img class="incoming-media-img" src="imagens/imgi_16_660665702_18418324108125243_6473536147567592195_n.jpg" alt="Anatomia dos Cortes de Salmão e Peixes Frescos" width="1920" height="1080" loading="eager" decoding="async" />
-        </div>
-        <div class="incoming-atmosphere"></div>
-      </div>
+  <!-- SKIP TO CONTENT (KEYBOARD ACCESSIBILITY) -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-      <!-- LAYER 1: EXPLORE 01 HERO MEDIA (Clipped along physical shear) -->
-      <div class="opening-media-wrap">
-        <img class="opening-img" src="imagens/imgi_42_639856189_18564622342037059_7155013422789376632_n.jpg" alt="Aji Sugoi Frescor e Matéria" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="sync" />
-        <div class="opening-atmosphere"></div>
-      </div>
+  <main id="main-content" tabindex="-1">
 
-      <!-- THE PHYSICAL RED LACQUER SHEAR BLADE -->
-      <div class="opening-shear-blade"></div>
-
-      <header class="site-nav">
-        <a href="/" class="brand-mark">
-          <span class="brand-name">Aji Sugoi</span>
-          <span class="brand-kanji">味すごい</span>
-        </a>
-        <span class="nav-location">São Bernardo do Campo &bull; Bairro dos Casa</span>
-      </header>
-
-      <main class="opening-content">
-        <h1 class="opening-title">
-          Onde o peixe fresco é a <em>própria matéria</em> da mesa.
-        </h1>
-        <p class="opening-lead">
-          Cortes fartos de salmão, peixes brancos e combinados autorais preparados diariamente. Servido em nosso salão e entregue com todo o rigor em sua casa.
-        </p>
-        <a href="https://ajisugoidelivery.com.br" target="_blank" rel="noopener noreferrer" class="opening-action">
-          Pedir pelo delivery oficial &rarr;
-        </a>
-      </main>
-
-      <aside class="opening-note">
-        <strong>Atendimento a partir das 17:30</strong>
-        Rua Wadia Jafete Assad, 20 &bull; (11) 4355-7193
-      </aside>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SCENE 02: ANATOMIA DOS CORTES (NATURAL FLOW WITH ASYMMETRIC SHOWCASE)
-       ========================================================================= -->
-  <section class="stage-anatomy" data-stage="anatomy">
-    <div class="anatomy-container">
-      
-      <div class="anatomy-editorial">
-        <span class="anatomy-kanji">鮮度と厚み</span>
-        <h2 class="anatomy-statement">
-          O corte não é fino.<br><em>É farto.</em>
-        </h2>
-        <p class="anatomy-caption">
-          Peixe fresco selecionado no dia, fatiado com a espessura e a generosidade que consagram o Aji Sugoi em São Bernardo do Campo.
-        </p>
-      </div>
-
-      <div class="anatomy-showcase-window">
-        <div class="anatomy-strip-wrap">
-          <img class="anatomy-strip-img" src="imagens/imgi_16_660665702_18418324108125243_6473536147567592195_n.jpg" alt="Anatomia dos Cortes de Salmão e Peixes Frescos" width="1920" height="1080" loading="eager" decoding="async" />
-        </div>
-        <div class="anatomy-vignette"></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SCENE 03: A FAMOSA CAIXA VERMELHA (THE SIGNATURE LACQUER UNBOXING)
-       ========================================================================= -->
-  <section class="stage-redbox" data-stage="redbox">
-    <div class="redbox-viewport">
-      
-      <div class="redbox-lacquer-plane"></div>
-
-      <div class="redbox-container-3d">
-        <!-- Combinado Interno em Glória Total -->
-        <div class="redbox-inner-feast">
-          <img class="redbox-combo-img" src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="A Famosa Caixa Vermelha Aji Sugoi" width="1200" height="825" loading="lazy" decoding="async" />
+    <!-- =========================================================================
+         SCENE 01: OPENING EXPERIENCE (EXPLORE 01 LOCKED)
+         ========================================================================= -->
+    <section class="stage-opening" data-stage="opening">
+      <div class="opening-viewport">
+        
+        <!-- LAYER 0: INCOMING SCENE 02 MEDIA (Guarantees 100% media coverage across entire shear) -->
+        <div class="opening-incoming-layer" aria-hidden="true">
+          <div class="incoming-media-track">
+            <img class="incoming-media-img" src="imagens/imgi_16_660665702_18418324108125243_6473536147567592195_n.jpg" alt="" aria-hidden="true" width="1920" height="1080" loading="eager" decoding="async" />
+          </div>
+          <div class="incoming-atmosphere" aria-hidden="true"></div>
         </div>
 
-        <!-- A Tampa Cerimonial que Abre no Scroll -->
-        <div class="redbox-lid-layer">
-          <div class="lid-brand-emboss">
-            <span class="lid-kanji">味すごい</span>
-            <span class="lid-brand">AJI SUGOI</span>
-            <span class="lid-seal">EMBALAGEM RÍGIDA ORIGINAL</span>
+        <!-- LAYER 1: EXPLORE 01 HERO MEDIA (Clipped along physical shear) -->
+        <div class="opening-media-wrap">
+          <img class="opening-img" src="imagens/imgi_42_639856189_18564622342037059_7155013422789376632_n.jpg" alt="Seleção de peixes frescos e peças artesanais da culinária japonesa Aji Sugoi" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="sync" />
+          <div class="opening-atmosphere" aria-hidden="true"></div>
+        </div>
+
+        <!-- THE PHYSICAL RED LACQUER SHEAR BLADE -->
+        <div class="opening-shear-blade" aria-hidden="true"></div>
+
+        <header class="site-nav">
+          <a href="/" class="brand-mark" aria-label="Aji Sugoi — Início">
+            <span class="brand-name">Aji Sugoi</span>
+            <span class="brand-kanji" aria-hidden="true">味すごい</span>
+          </a>
+          <span class="nav-location">São Bernardo do Campo &bull; Bairro dos Casa</span>
+        </header>
+
+        <div class="opening-content">
+          <h1 class="opening-title">
+            Onde o peixe fresco é a <em>própria matéria</em> da mesa.
+          </h1>
+          <p class="opening-lead">
+            Cortes fartos de salmão, peixes brancos e combinados autorais preparados diariamente. Servido em nosso salão e entregue com todo o rigor em sua casa.
+          </p>
+          <a href="https://ajisugoidelivery.com.br" target="_blank" rel="noopener noreferrer" class="opening-action" aria-label="Pedir pelo delivery oficial (abre em nova aba)">
+            Pedir pelo delivery oficial &rarr;
+          </a>
+        </div>
+
+        <aside class="opening-note" aria-label="Horário e endereço de atendimento">
+          <strong>Atendimento a partir das 17:30</strong>
+          Rua Wadia Jafete Assad, 20 &bull; (11) 4355-7193
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCENE 02: ANATOMIA DOS CORTES (NATURAL FLOW WITH ASYMMETRIC SHOWCASE)
+         ========================================================================= -->
+    <section class="stage-anatomy" data-stage="anatomy">
+      <div class="anatomy-container">
+        
+        <div class="anatomy-editorial">
+          <span class="anatomy-kanji" aria-hidden="true">鮮度と厚み</span>
+          <h2 class="anatomy-statement">
+            O corte não é fino.<br><em>É farto.</em>
+          </h2>
+          <p class="anatomy-caption">
+            Peixe fresco selecionado no dia, fatiado com a espessura e a generosidade que consagram o Aji Sugoi em São Bernardo do Campo.
+          </p>
+        </div>
+
+        <div class="anatomy-showcase-window">
+          <div class="anatomy-strip-wrap">
+            <img class="anatomy-strip-img" src="imagens/imgi_16_660665702_18418324108125243_6473536147567592195_n.jpg" alt="Cortes espessos e generosos de salmão e sashimis frescos preparados no dia" width="1920" height="1080" loading="eager" decoding="async" />
+          </div>
+          <div class="anatomy-vignette" aria-hidden="true"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SCENE 03: A FAMOSA CAIXA VERMELHA (THE SIGNATURE LACQUER UNBOXING)
+         ========================================================================= -->
+    <section class="stage-redbox" data-stage="redbox">
+      <div class="redbox-viewport">
+        
+        <div class="redbox-lacquer-plane" aria-hidden="true"></div>
+
+        <div class="redbox-container-3d">
+          <!-- Combinado Interno em Glória Total -->
+          <div class="redbox-inner-feast">
+            <img class="redbox-combo-img" src="imagens/imgi_47_621995783_18104209954826534_4197973133947307511_n.jpg" alt="Combinado especial de sushis e sashimis servido na embalagem rígida vermelha laqueada" width="1200" height="825" loading="lazy" decoding="async" />
+          </div>
+
+          <!-- A Tampa Cerimonial que Abre no Scroll -->
+          <div class="redbox-lid-layer" aria-hidden="true">
+            <div class="lid-brand-emboss">
+              <span class="lid-kanji" aria-hidden="true">味すごい</span>
+              <span class="lid-brand">AJI SUGOI</span>
+              <span class="lid-seal">EMBALAGEM RÍGIDA ORIGINAL</span>
+            </div>
           </div>
         </div>
+
+        <div class="redbox-narrative">
+          <h2 class="redbox-headline">
+            A famosa caixa vermelha.<br><em>O rigor do salão na sua mesa.</em>
+          </h2>
+          <p class="redbox-sub">
+            Embalagem rígida sob medida que impede o deslocamento das peças e preserva a textura e o frescor até a sua mesa.
+          </p>
+        </div>
+
       </div>
+    </section>
 
-      <div class="redbox-narrative">
-        <h2 class="redbox-headline">
-          A famosa caixa vermelha.<br><em>O rigor do salão na sua mesa.</em>
-        </h2>
-        <p class="redbox-sub">
-          Embalagem rígida sob medida que impede o deslocamento das peças e preserva a textura e o frescor até a sua mesa.
-        </p>
+    <!-- =========================================================================
+         SCENE 04: A NOITE NO SALÃO (NATURAL FLOW + OPTICAL ILLUMINATION)
+         ========================================================================= -->
+    <section class="stage-dining" data-stage="dining">
+      <div class="dining-viewport">
+        
+        <div class="dining-media-wrap">
+          <img class="dining-bg-img" src="imagens/imgi_51_625949395_18358099891202664_240056681359955242_n.jpg" alt="Salão do restaurante Aji Sugoi com iluminação acolhedora e mesas postas para o jantar" width="1920" height="1080" loading="lazy" decoding="async" />
+          <div class="dining-dark-overlay" aria-hidden="true"></div>
+          <div class="dining-light-cone" aria-hidden="true"></div>
+          <div class="dining-atmosphere" aria-hidden="true"></div>
+        </div>
+
+        <div class="dining-copy-wrap">
+          <span class="dining-badge-time">TERÇA A DOMINGO &bull; A PARTIR DAS 17:30</span>
+          <h2 class="dining-title">
+            A mesa do salão.<br><em>Rodízio e criações autorais.</em>
+          </h2>
+          <p class="dining-address">
+            <a href="https://maps.google.com/?q=Aji+Sugoi+Culinaria+Japonesa+Rua+Wadia+Jafete+Assad+20+Sao+Bernardo+do+Campo" target="_blank" rel="noopener noreferrer" class="dining-address-link" style="color: inherit; text-decoration: none;" aria-label="Ver localização no Google Maps: Rua Wadia Jafete Assad, 20 — Bairro dos Casa (abre em nova aba)">Rua Wadia Jafete Assad, 20 &mdash; Bairro dos Casa, São Bernardo do Campo.</a><br>
+            Ambiente acolhedor e atendimento tradicional da casa.
+          </p>
+        </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SCENE 04: A NOITE NO SALÃO (NATURAL FLOW + OPTICAL ILLUMINATION)
-       ========================================================================= -->
-  <section class="stage-dining" data-stage="dining">
-    <div class="dining-viewport">
-      
-      <div class="dining-media-wrap">
-        <img class="dining-bg-img" src="imagens/imgi_51_625949395_18358099891202664_240056681359955242_n.jpg" alt="Salão Aji Sugoi Noturno" width="1920" height="1080" loading="lazy" decoding="async" />
-        <div class="dining-dark-overlay"></div>
-        <div class="dining-light-cone"></div>
-        <div class="dining-atmosphere"></div>
-      </div>
-
-      <div class="dining-copy-wrap">
-        <span class="dining-badge-time">TERÇA A DOMINGO &bull; A PARTIR DAS 17:30</span>
-        <h2 class="dining-title">
-          A mesa do salão.<br><em>Rodízio e criações autorais.</em>
-        </h2>
-        <p class="dining-address">
-          <a href="https://maps.google.com/?q=Aji+Sugoi+Culinaria+Japonesa+Rua+Wadia+Jafete+Assad+20+Sao+Bernardo+do+Campo" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Rua Wadia Jafete Assad, 20 &mdash; Bairro dos Casa, São Bernardo do Campo.</a><br>
-          Ambiente acolhedor e atendimento tradicional da casa.
-        </p>
-      </div>
-
-    </div>
-  </section>
+  </main>
 
   <!-- =========================================================================
        SCENE 05 / FINAL: MONUMENTAL CAMPAIGN POSTER CLOSURE
        ========================================================================= -->
   <footer class="stage-poster" data-stage="poster">
-    <div class="poster-bg-media">
-      <img class="poster-bg-img" src="imagens/imgi_27_652008549_18124938691570370_4252929218745402272_n.jpg" alt="Aji Sugoi Banquete Monumental" width="1920" height="1080" loading="lazy" decoding="async" />
-      <div class="poster-vignette"></div>
+    <div class="poster-bg-media" aria-hidden="true">
+      <img class="poster-bg-img" src="imagens/imgi_27_652008549_18124938691570370_4252929218745402272_n.jpg" alt="" aria-hidden="true" width="1920" height="1080" loading="lazy" decoding="async" />
+      <div class="poster-vignette" aria-hidden="true"></div>
     </div>
 
     <div class="poster-viewport">
       
       <div class="poster-brand-anchor">
-        <span class="poster-brand-kanji">味すごい</span>
+        <span class="poster-brand-kanji" aria-hidden="true">味すごい</span>
         <h2 class="poster-brand-title">Aji Sugoi</h2>
       </div>
 
@@ -1043,11 +1126,11 @@
         </p>
 
         <div class="poster-direct-actions">
-          <a href="https://ajisugoidelivery.com.br" target="_blank" rel="noopener noreferrer" class="action-btn action-delivery">
+          <a href="https://ajisugoidelivery.com.br" target="_blank" rel="noopener noreferrer" class="action-btn action-delivery" aria-label="Pedir no Delivery Oficial pelo site ajisugoidelivery.com.br (abre em nova aba)">
             <span class="btn-label">Pedir no Delivery Oficial</span>
             <span class="btn-sub">ajisugoidelivery.com.br &rarr;</span>
           </a>
-          <a href="tel:1143557193" class="action-btn action-phone">
+          <a href="tel:1143557193" class="action-btn action-phone" aria-label="Ligar para o restaurante no telefone (11) 4355-7193">
             <span class="btn-label">Salão & Atendimento</span>
             <span class="btn-sub">(11) 4355-7193</span>
           </a>
@@ -1055,7 +1138,7 @@
       </div>
 
       <div class="poster-ground-facts">
-        <span><a href="https://maps.google.com/?q=Aji+Sugoi+Culinaria+Japonesa+Rua+Wadia+Jafete+Assad+20+Sao+Bernardo+do+Campo" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Rua Wadia Jafete Assad, 20 &bull; Bairro dos Casa, São Bernardo do Campo</a></span>
+        <span><a href="https://maps.google.com/?q=Aji+Sugoi+Culinaria+Japonesa+Rua+Wadia+Jafete+Assad+20+Sao+Bernardo+do+Campo" target="_blank" rel="noopener noreferrer" class="footer-maps-link" style="color: inherit; text-decoration: none;" aria-label="Ver rota no Google Maps: Rua Wadia Jafete Assad, 20, Bairro dos Casa (abre em nova aba)">Rua Wadia Jafete Assad, 20 &bull; Bairro dos Casa, São Bernardo do Campo</a></span>
         <span>Terça a Domingo a partir das 17:30 &bull; <strong>4,4★ (mais de 860 avaliações)</strong></span>
       </div>
 
@@ -1096,6 +1179,7 @@
       // 2. CHECK REDUCED MOTION
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) {
+        lenis.destroy();
         return;
       }
 
