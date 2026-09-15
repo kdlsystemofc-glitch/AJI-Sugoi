@@ -1,16 +1,18 @@
 {
   "name": "aji-sugoi",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Aji Sugoi — Culinária Japonesa em São Bernardo do Campo",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "puppeteer": "^25.10.0"
+  "type": "module",
+  "devDependencies": {
+    "puppeteer": "^25.10.0",
+    "vite": "^8.3.0"
   }
 }
