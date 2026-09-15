@@ -7,6 +7,13 @@
   <meta name="description" content="Restaurante japonês em São Bernardo do Campo especializado em cortes fartos de salmão, sashimis frescos, rodízio e combinados autorais. Peça pelo delivery oficial ou visite nosso salão.">
   <link rel="canonical" href="https://ajisugoidelivery.com.br">
   <meta name="robots" content="index, follow">
+  <script>
+    // Automatically enforce noindex, nofollow on preview / staging / non-production hosts
+    if (window.location.hostname !== 'ajisugoidelivery.com.br' && window.location.hostname !== 'ajisugoi.com.br') {
+      const robotsTag = document.querySelector('meta[name="robots"]');
+      if (robotsTag) robotsTag.setAttribute('content', 'noindex, nofollow');
+    }
+  </script>
   <meta name="theme-color" content="#070709">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍣</text></svg>">
 
